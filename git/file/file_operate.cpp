@@ -11,14 +11,21 @@ string FL_OP::get_current_branch()
 	return name;
 }
 
-void FL_OP::file_conflict(const string& branch1, const string& branch2)
+void FL_OP::file_conflict(const string& branch_name1, const string& branch_name2)
 {
+	Branch branch1(branch_name1);
+	Branch branch2(branch_name2);
+
+	if(branch1.getHash() == branch2.getHash())
+		cout << "Same!" << endl;
+	else
+		// TODO:计算出具体的不同信息
+		cout << "Different!" << endl;
 }
 
 string FL_OP::get_branch_file_hash(const string& branch, const string& file)
 {
 	Branch branch_data(branch);
-
 	return branch_data.get_file_hash(file);
 }
 

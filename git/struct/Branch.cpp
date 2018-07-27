@@ -174,9 +174,9 @@ bool operator==(const Branch& left, const Branch& right)
 
 bool operator>=(const Branch& left, const Branch& right)
 {
-	// TODO:�ж�left�ϵ�ȫ���ļ��ڵ��Ƿ����right�϶�Ӧ����£�ע�⣬��right��ӦΪ�սڵ�ʱ����ԶΪ��
+	// TODO:判断left上的全部文件节点是否均比right上对应结点新，注意，当right对应为空节点时，永远为新
 	
-	// TODO:Ϊ�ˣ���Ҫ����right�Ķ�Ӧ��ϵ��map
+	// TODO:为此，需要构建right的对应关系的map
 
-	// TODO:�����жϸ����ڵ�ĸ������
+	// TODO:依次判断各个节点的更新情况
 }

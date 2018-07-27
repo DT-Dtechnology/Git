@@ -17,12 +17,14 @@ void init_folder()
 	string ref_folder = ".git\\ref";
 	string db_folder = ".git\\db";
 	string object_folder = ".git\\object";
+	string object_local_folder = ".git\\object\\local";
 	string status_folder = ".git\\status";
 	
 	_mkdir(main_fold_name.c_str());
 	_mkdir(ref_folder.c_str());
 	_mkdir(db_folder.c_str());
 	_mkdir(object_folder.c_str());
+	_mkdir(object_local_folder.c_str());
 	_mkdir(status_folder.c_str());
 }
 

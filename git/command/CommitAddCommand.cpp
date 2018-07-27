@@ -17,9 +17,6 @@ void commit_add_command(const string& file_name)
 	// �ж�Hashֵ�Ƿ���ͬ����ֱͬ�ӷ��أ��������
 
 	FileNode file(file_name);
-	
-	cout << "File:" << file.getName() << " " << file.getHash() << endl;
-	cout << "Pre :" << file_name << " " << hash << endl;
 
 	if(file.getHash() == hash)
 		return;
