@@ -5,6 +5,7 @@ TARGET = git.exe
 SRC = $(wildcard *.cpp)
 OBJ = $(patsubst %.cpp, %.o, $(SRC))
 SUBDIR = ./command ./db ./file ./hash ./struct .
+DEP = $(foreach dir, $(SUBDIR), $(wildcard $(dir)/*.o))
 
 all : sub cur main
 
@@ -19,8 +20,6 @@ cur : $(OBJ)
 
 %.o : %.cpp
 	$(CPP) -c -o $@ $< $(GNN)
-
-DEP = $(foreach dir, $(SUBDIR), $(wildcard $(dir)/*.o))
 
 main: $(DEP)
 	$(CPP) -o $(TARGET) $^ $(GNU)

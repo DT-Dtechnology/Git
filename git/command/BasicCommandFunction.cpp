@@ -13,9 +13,6 @@ void refresh_file(const string& branch_name)
 {
 	Branch branch(branch_name);
 	
-	// TODO:����������������ļ�
-
-	// ����������д���ļ�
 	ofstream out;
 	ifstream in;
 	for (auto it = branch.getNodeVector().begin(); it != branch.getNodeVector().end(); ++it)
