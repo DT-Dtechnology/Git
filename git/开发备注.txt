@@ -1,0 +1,13 @@
+重要提示：
+1. 存储库中文件的命名filename即为hashValue
+2. branch和file均存入.git\object文件夹
+3. branch的指向信息（）存入.git\ref文件夹
+4. 初始化时创建.git文件夹，同时创建master分支
+5. 不考虑使用数据库操作
+6. object文件最初为原文件不变，后期考虑压缩与解压缩问题
+7. 对应信息放在.git\db文件夹内，分别以File_Match和Branch_Match命名
+8. 程序优先进行线性时间的查找算法，定长时间的插入和删除算法
+9. .git\status文件夹用于记录当前状态信息，其中Current文件用于记录当前分着
+10.修改5.，Match信息使用数据库存储sqlite3
+11.c++的fstream的文件写为覆盖
+12.数据库中主键为Hash，File_Match仅需添加，Branch_Match既有添加又有更新
