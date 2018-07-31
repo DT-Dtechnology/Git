@@ -2,8 +2,8 @@
 #include <string>
 
 /**
- * \brief °üº¬ÁËFileµÄ»ù±¾ÐÅÏ¢£¬ÓÃÓÚÏòÊý¾Ý¿âÖÐ½øÐÐÄÚÈÝÊäÈëÓëÊä³ö¡£
- * ÐèÒª°üº¬HashÖµ£¬ÎÄ¼þÃû£¬ÒÔ¼°Á´½ÓÇé¿ö¡££¨×¢Òâ£¬Á´½ÓÇé¿ö½ö¿¼ÂÇµ¥·ÖÖ§£©
+ * \brief ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Fileï¿½Ä»ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý¿ï¿½ï¿½Ð½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ * ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½HashÖµï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×¢ï¿½â£¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Çµï¿½ï¿½ï¿½Ö§ï¿½ï¿½
  */
 
 using std::string;
@@ -13,10 +13,10 @@ class DB_OP;
 
 class FileNode
 {
-	string file_name_;	// ÎÄ¼þÃû£¬ÕâÀïÎª¹¤×÷ÇøÖÐÎÄ¼þÃû£¬²»Í¬ÓÚhashValue
+	string file_name_;	// ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Îªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¬ï¿½ï¿½hashValue
 	string hash_value_;
-	string pre_file_ ;		// ÔÚÎÄ¼þÖÐÒÔHashÖµ´æ´¢£¬
-						// È«²¿Îª0±íÊ¾Î´´´½¨×´Ì¬£¨»ù×¼×´Ì¬£©
+	string pre_file_ ;		// ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½HashÖµï¿½æ´¢ï¿½ï¿½
+						// È«ï¿½ï¿½Îª0ï¿½ï¿½Ê¾Î´ï¿½ï¿½ï¿½ï¿½×´Ì¬ï¿½ï¿½ï¿½ï¿½×¼×´Ì¬ï¿½ï¿½
 	friend Branch;
 
 	void get_hash();
@@ -25,14 +25,13 @@ public:
 	FileNode() = default;
 	FileNode(const string& file_name);
 	FileNode(const string& file_name, const string& file_hash);
-	void setPreNode(const string& hash_value);	// »ùÓÚÎÄ¼þÖÐ¼ÇÂ¼µÄHashÖµÀ´´´½¨Á´½Ó
+	void setPreNode(const string& hash_value);	// ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½Ð¼ï¿½Â¼ï¿½ï¿½HashÖµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
 	void write();
-	void insert();
 	string getName() const;
 	string getHash() const;
 
-	// ÏÈºó¹ØÏµµÄÅÐ¶Ï
+	// ï¿½Èºï¿½ï¿½Ïµï¿½ï¿½ï¿½Ð¶ï¿½
 	friend bool operator> (const FileNode& left, const FileNode& right);
 
 	friend DB_OP;

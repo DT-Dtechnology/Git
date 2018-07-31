@@ -17,8 +17,6 @@ public:
 
     static string get_branch_file_hash(const string& branch, const string& file);
 
-    static string get_Branch_Latest_Hash(const string& name);
-
     static string get_Branch_hash(const string& name);
 
     // ��ȡ�������������ļ���

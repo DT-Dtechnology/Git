@@ -27,6 +27,7 @@ void Branch::write()
 
 void Branch::get_hash()
 {
+	// For a better search.
 	sort_file();
 
 	ofstream out;
@@ -51,9 +52,7 @@ Branch::Branch(const string& name):branch_name_(name)
 {
 	// ͨ�����ݿ��ȡHashֵ��Ӧ��������
 	hash_value_ = FL_OP::get_Branch_hash(branch_name_);
-
-	// TODO: Arthur
-	// pre_branch_ = DB_OP::get_pre_branch_hash(hash_value_);
+	pre_branch_ = FL_OP::get_Branch_hash(branch_name_);
 
 	// ��ȡNodeVector
 	string file_name;
@@ -72,18 +71,25 @@ Branch::Branch()
 {
 	// �ӵ�ǰ�������л�ȡһ��Branch
 	branch_name_ = FL_OP::get_current_branch();
-
+	pre_branch_ = FL_OP::get_Branch_hash(branch_name_);
+	
 	// TODO:Scott
 	// TODO:ͨ����ȡ�ļ�����Branch��ע��ڵ�����
-}
+	vector<string> file_name;
+	char *buf = new char[1000];
+	int i = 1000;
+	GetCurrentDirectoryA(1000, buf);
+	string path = buf;
+	FL_OP::get_file_name(path, file_name);
+	for (auto i = file_name.begin(); i != file_name.end(); ++i)
+	{
+		(*i) = (*i).substr(path.length() + 1);
+		node_vector_.push_back(*i);
+	}
+	delete[] buf;
 
-
-void Branch::update()
-{
+	// Get the hash.
 	get_hash();
-
-	// TODO:Arthur
-	// TODO:�������ݿ�
 }
 
 void Branch::addFile(const FileNode& file)
@@ -153,7 +159,10 @@ void Branch::update_file(const string& file_name, const string& new_hash)
 		node_vector_.push_back(FileNode(file_name, new_hash));
 		return;
 	}
-	it->hash_value_ = new_hash;
+	if(it->hash_value_ == NONE_FILE_HASH)
+		node_vector_.erase(it);
+	else	
+		it->hash_value_ = new_hash;
 }
 
 string Branch::get_file_hash(const string& file_name)

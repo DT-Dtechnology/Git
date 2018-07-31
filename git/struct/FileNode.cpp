@@ -10,7 +10,7 @@ void FileNode::get_hash()
 FileNode::FileNode(const string& file_name):file_name_(file_name)
 {
 	get_hash();
-	pre_file_ = NONE_FILE_HASH;
+	pre_file_ = FL_OP::get_branch_file_hash(FL_OP::get_current_branch(), file_name);
 }
 
 FileNode::FileNode(const string& file_name, const string& file_hash)
@@ -37,11 +37,6 @@ void FileNode::write()
 	in.close();
 	out.close();
 
-}
-
-void FileNode::insert()
-{
-	// TODO:��File_Match����Ӷ�Ӧ
 }
 
 inline string FileNode::getName() const

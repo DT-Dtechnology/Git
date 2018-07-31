@@ -30,10 +30,6 @@ void commit_add_command(const string& file_name)
 
 void commit_add_command()
 {
-	// �������ļ�add
-
-	// TODO:Scott
-	// ��ȡ�������������ļ��ļ���
 	vector<string> file_name;
 	char *buf = new char[1000];
 	int i = 1000;
@@ -42,11 +38,11 @@ void commit_add_command()
 	FL_OP::get_file_name(path, file_name);
 	for (auto i = file_name.begin(); i != file_name.end(); ++i)
 		(*i) = (*i).substr(path.length() + 1);
-	// �����ļ���ִ��commit_add_command(file_name)
 	for (auto i = file_name.begin(); i != file_name.end(); ++i)
 	{
 		commit_add_command((*i));
 	}
+	delete[] buf;
 }
 
 void branch_refresh(int argc, const char* argv[] )
@@ -61,7 +57,6 @@ void branch_refresh(int argc, const char* argv[] )
 		branch.update_file(file.getName(), file.getHash());
 	}
 
-	branch.set_pre();
 	branch.get_hash();
 
 	if(branch.getHash() == branch.getPre())
@@ -73,25 +68,7 @@ void branch_refresh(int argc, const char* argv[] )
 
 void branch_refresh()
 {
-	Branch branch(FL_OP::get_current_branch());
-
-	vector<string> file_name;
-	char *buf = new char[1000];
-	int i = 1000;
-	GetCurrentDirectoryA(1000, buf);
-	string path = buf;
-	FL_OP::get_file_name(path, file_name);
-	for (auto i = file_name.begin(); i != file_name.end(); ++i)
-		(*i) = (*i).substr(path.length() + 1);
-
-	for(auto it = file_name.begin() ; it != file_name.end() ; ++it)
-	{
-		FileNode file(*it);
-		branch.update_file(file.getName(), file.getHash());
-	}
-
-	branch.set_pre();
-	branch.get_hash();
+	Branch branch;
 
 	if(branch.getHash() == branch.getPre())
 		return;

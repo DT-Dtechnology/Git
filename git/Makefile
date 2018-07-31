@@ -5,9 +5,11 @@ TARGET = git.exe
 SRC = $(wildcard *.cpp)
 OBJ = $(patsubst %.cpp, %.o, $(SRC))
 SUBDIR = ./command ./db ./file ./hash ./struct .
-DEP = $(foreach dir, $(SUBDIR), $(wildcard $(dir)/*.o))
+CPPDEP = $(patsubst %.cpp, %.o, $(foreach dir, $(SUBDIR), $(wildcard $(dir)/*.cpp)))
+CCDEP = $(patsubst %.c, %.o, $(foreach dir, $(SUBDIR), $(wildcard $(dir)/*.c)))
+DEP = $(CPPDEP) $(CCDEP)  
 
-all : sub cur main
+all : sub cur main clean
 
 sub :
 	make -C ./command

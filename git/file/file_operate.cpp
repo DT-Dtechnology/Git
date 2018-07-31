@@ -29,16 +29,6 @@ string FL_OP::get_branch_file_hash(const string& branch, const string& file)
 	return branch_data.get_file_hash(file);
 }
 
-string FL_OP::get_Branch_Latest_Hash(const string& name)
-{
-	ifstream in;
-	string hash;
-	in.open(GIT_REF + name);
-	in >> hash;
-	in.close();
-	return hash;
-}
-
 void FL_OP::get_file_name(const string& path, vector<string>& files)
 {	
 	//�ļ����  

@@ -38,7 +38,6 @@ public:
 	 */
 	void get_hash();
 	void write();
-	void update();
 	void addFile(const FileNode& file);
 	void insert();
 	void set_start(const string& new_name);
