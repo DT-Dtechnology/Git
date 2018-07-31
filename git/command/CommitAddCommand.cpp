@@ -18,7 +18,7 @@ void commit_add_command(const string& file_name)
 
 	FileNode file(file_name);
 
-	if(file.getHash() == hash)
+	if(file.getHash() == hash || file.getHash() == NONE_FILE_HASH)
 		return;
 	file.setPreNode(hash);
 	file.write();
