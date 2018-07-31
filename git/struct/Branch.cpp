@@ -72,7 +72,7 @@ Branch::Branch()
 	// �ӵ�ǰ�������л�ȡһ��Branch
 	branch_name_ = FL_OP::get_current_branch();
 	pre_branch_ = FL_OP::get_Branch_hash(branch_name_);
-	
+
 	// TODO:Scott
 	// TODO:ͨ����ȡ�ļ�����Branch��ע��ڵ�����
 	vector<string> file_name;
@@ -156,10 +156,11 @@ void Branch::update_file(const string& file_name, const string& new_hash)
 	auto it = find_node(node_vector_, file_name);
 	if (it == node_vector_.end())
 	{
-		node_vector_.push_back(FileNode(file_name, new_hash));
+		if(new_hash != NONE_FILE_HASH)
+			node_vector_.push_back(FileNode(file_name, new_hash));
 		return;
 	}
-	if(it->hash_value_ == NONE_FILE_HASH)
+	if(new_hash == NONE_FILE_HASH)
 		node_vector_.erase(it);
 	else	
 		it->hash_value_ = new_hash;
